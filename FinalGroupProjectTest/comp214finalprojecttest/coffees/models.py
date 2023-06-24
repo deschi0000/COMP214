@@ -8,3 +8,19 @@ class Coffee(models.Model):
 
     def __str__(self):
         return f"Name: {self.name}\nOrigin: {self.origin}\nPrice: {self.price}"
+
+class Location(models.Model):
+    name = models.CharField(max_length=64)
+    city = models.CharField(max_length=64)
+    country = models.CharField(max_length=64)
+    
+    def __str__(self):
+        return f"Name: {self.name}\nCity: {self.city}\nCountry: {self.country}"
+
+class Employee(models.Model):
+    fname = models.CharField(max_length=64)
+    lname = models.CharField(max_length=64)
+    email = models.CharField(max_length=64)
+
+    def __str__(self):
+        return f"First Name: {self.fname}\nLast Name: {self.lname}\nEmail: {self.email}"
