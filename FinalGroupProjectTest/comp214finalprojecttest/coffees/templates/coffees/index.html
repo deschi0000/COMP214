@@ -1,0 +1,10 @@
+{% extends "coffees/layout.html" %}
+
+{% block body %}
+    <h1>Coffees:</h1>
+    <ul>
+        {% for coffee in coffees %}
+            <li>Coffee {{ coffee.name }}: {{ coffee.origin }} to {{ coffee.price }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
