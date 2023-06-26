@@ -1,0 +1,12 @@
+{% extends "coffees/layout.html" %}
+
+{% block body %}
+    <h1>Coffees:</h1>
+    <ul>
+        {% for employee in employees %}
+            <li>Name: {{ employee.fname }} {{ employee.lname }} <br> Workplace: {{ employee.workplace }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/coffees">Back to Coffees</a>
+    <a href="/">Back to home</a>
+{% endblock %}
