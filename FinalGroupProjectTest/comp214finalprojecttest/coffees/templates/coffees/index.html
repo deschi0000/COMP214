@@ -1,14 +1,30 @@
 {% extends "coffees/layout.html" %}
 
 {% block body %}
-    <h1>Coffees:</h1>
-    <ul>
+    <h1>Coffees</h1>
+    <!-- <ul>
         {% for coffee in coffees %}
             <li>Coffee {{ coffee.name }}: {{ coffee.origin }} to {{ coffee.price }}</li>
         {% endfor %}
     </ul>
     <a href="/">Back to home</a>
-    <a href="/coffees/employees">See Employees</a>
+    <a href="/coffees/employees">See Employees</a> -->
 
-    
+    <table class="table table-bordered table-striped table-hover">
+        <!-- Header row -->
+        <tr>
+            <th class="text-center col-3">Name</th>
+            <th class="text-center col-2">Origin</th>
+            <th class="text-center col-2">Price</th>
+
+        </tr>
+        <!-- Repeatable Template Row -->
+        {% for coffee in coffees %}
+            <tr>
+                    <td class="text-center col-3">{{ coffee.name }}</td>
+                    <td class="text-center col-2">{{ coffee.origin }}</td>
+                    <td class="text-center col-3">{{ coffee.price }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
