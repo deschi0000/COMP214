@@ -16,6 +16,7 @@
             <th class="text-center col-3">Name</th>
             <th class="text-center col-2">Origin</th>
             <th class="text-center col-2">Price</th>
+            <th class="text-center col-2"></th>
 
         </tr>
         <!-- Repeatable Template Row -->
@@ -24,7 +25,15 @@
                     <td class="text-center col-3">{{ coffee.name }}</td>
                     <td class="text-center col-2">{{ coffee.origin }}</td>
                     <td class="text-center col-3">{{ coffee.price }}</td>
+                    <td class="text-center col-2">
+                        <a href="{% url 'edit-coffee' coffee.id %}" class="btn btn-primary btn-sm">Edit</a>
+                    </td>
+                    <!-- <%= ContactList[count]._id %> -->
             </tr>
         {% endfor %}
     </table>
+
+
+    <a href="/coffees/add" class="btn btn-primary add-button" role="button" id="addcoffee">Add Coffee</a>
 {% endblock %}
+
