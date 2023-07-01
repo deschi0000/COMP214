@@ -1,0 +1,16 @@
+{% extends "coffees/layout.html" %}
+
+{% block body %}
+  <h1>{{ location.name }}</h1>
+  <h3>{{location.city}}, {{location.country}}</h3>
+
+
+  <ul class="list-group">
+      <li class="list-group-item"><strong>Employees</strong></li>
+      {% for employee in employees %}
+        <li class="list-group-item">{{employee.fname}} {{employee.lname}}</li>
+      {% endfor%}
+    </ul>
+
+
+{% endblock %}

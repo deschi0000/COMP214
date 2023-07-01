@@ -21,8 +21,12 @@
         {% for employee in employees %}
             <tr>
                     <td class="text-center col-3">{{ employee.fname }} {{ employee.lname }}</td>
-                    <td class="text-center col-3">{{ employee.workplace.name }}</td>
+                    <td class="text-center col-3">
+                        <a href="{% url 'location' employee.workplace.id %}" >{{ employee.workplace.name }}</a>
+                    </td>
             </tr>
         {% endfor %}
     </table>
+
+    <a href="/coffees/addemployee" class="btn btn-primary add-button" role="button" id="addcoffee">Add Employee</a>
 {% endblock %}

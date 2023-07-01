@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Coffee, Employee
-from .forms import NewCoffeeForm
+from .models import Coffee, Employee, Location
+from .forms import NewCoffeeForm, NewEmployeeForm
 
 # Create your views here.
 def index(request):
@@ -14,6 +14,47 @@ def index(request):
 def employees(request):
     return render(request, "coffees/employees.html", {
         "employees": Employee.objects.all()
+    })
+
+
+
+# ADD EMPLOYEE
+def add_employee(request):
+    if request.method == "POST":
+        newemployee = NewEmployeeForm(request.POST)
+
+        if newemployee.is_valid():
+            print('TRUE')
+            newemployee.save()
+        else:
+            print('Form is invalid:', newemployee.errors)   
+            return HttpResponseRedirect(reverse("employees"))
+    
+    # New coffee Form
+    form = NewEmployeeForm
+
+    return render(request, "coffees/addemployee.html", {
+        "form": form
+    })
+
+
+
+
+def location_list(request):
+    return render(request, "coffees/locations.html", {
+        "locations": Location.objects.all()
+    })
+
+def location(request, location_id):
+    location = Location.objects.get(id=location_id)
+    employees = Employee.objects.filter(workplace=location)
+    print(employees)
+
+
+    return render(request, "coffees/location.html", {
+        "location": location,
+        "employees": employees
+        # "locations": Location.objects.all()
     })
 
 # ADD
